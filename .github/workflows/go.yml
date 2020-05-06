@@ -37,10 +37,10 @@ jobs:
       run: go build -v ./...
 
     - name: Test
-      run: go test -race ./...
+      run: go test -v -race ./...
 
     - name: Test W/O Extension
-      run: go test -race ./pkg/pgmodel -use-extension=false
+      run: go test -v -race ./pkg/pgmodel -use-extension=false
 
     - name: Generated
       run: |
