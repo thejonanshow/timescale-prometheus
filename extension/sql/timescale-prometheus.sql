@@ -1,5 +1,5 @@
 
-DO $$ BEGIN RAISE EXCEPTION 'force extension install to fail'; END $$;
+DO $$ BEGIN RAISE WARNING 'NOP change'; END $$;
 
 DO $$
     DECLARE
