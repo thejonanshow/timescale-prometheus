@@ -33,13 +33,13 @@ jobs:
         fi
 
     - name: Build
-      run: go build -v ./...
+      run: go build ./...
 
     - name: Test
-      run: go test -v -race ./...
+      run: go test -race ./...
 
     - name: Test W/O Extension
-      run: go test -v -race ./pkg/pgmodel -use-extension=false
+      run: go test -race ./pkg/pgmodel -use-extension=false
 
     - name: Generated
       run: |
