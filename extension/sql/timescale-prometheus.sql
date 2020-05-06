@@ -1,6 +1,4 @@
 
-DO $$ BEGIN RAISE WARNING 'NOP change'; END $$;
-
 DO $$
     DECLARE
         current_version INT;
