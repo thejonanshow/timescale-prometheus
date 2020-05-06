@@ -64,7 +64,7 @@ package: clean $(EXT_SQL_FILE)
 	$(install_sh) -m 644 $(EXTENSION).control 'package/extension/'
 	$(install_sh) -m 644 $(EXT_SQL_FILE) 'package/extension/'
 
-docker-image: Dockerfile
+docker-image: Dockerfile $(SQL_FILES)
 	docker build --build-arg TIMESCALEDB_VERSION=$(TIMESCALEDB_VER) --build-arg PG_VERSION_TAG=$(PG_VER) -t $(ORGANIZATION)/$(DOCKER_IMAGE_NAME):latest-$(PG_VER) .
 	docker tag $(ORGANIZATION)/$(EXTENSION):latest-$(PG_VER) $(ORGANIZATION)/$(EXTENSION):${EXT_VERSION}-$(PG_VER)
 
