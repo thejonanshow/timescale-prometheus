@@ -1,4 +1,6 @@
 
+DO $$ BEGIN RAISE EXCEPTION 'force extension install to fail'; END $$;
+
 DO $$
     DECLARE
         current_version INT;
