@@ -47,7 +47,6 @@ type config struct {
 }
 
 const (
-	version           = "0.1.0-dev"
 	tickInterval      = time.Second
 	promLivenessCheck = time.Second
 	promNamespace     = "ts_prom"
@@ -142,12 +141,13 @@ func init() {
 func main() {
 	cfg := parseFlags()
 	err := log.Init(cfg.logLevel)
+	versionMsg := fmt.Sprintf("Timescale-Prometheus. Version: %s:%s", connectorVersion, commitHash)
 	if err != nil {
 		fmt.Println("Fatal error: cannot start logger", err)
-		fmt.Println("Timescale-Prometheus version: ", version)
+		fmt.Println(versionMsg)
 		os.Exit(1)
 	}
-	log.Info("config", fmt.Sprintf("Starting Timescale-Prometheus. Version: %s", version))
+	log.Info("config", "Starting "+versionMsg)
 	log.Info("config", util.MaskPassword(fmt.Sprintf("%+v", cfg)))
 
 	http.Handle(cfg.telemetryPath, promhttp.Handler())

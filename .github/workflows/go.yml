@@ -39,7 +39,7 @@ jobs:
     - name: Test W/O Extension
       run: go test -race ./pkg/pgmodel -use-extension=false
 
-    - name: Generated
+    - name: Generated pkg
       run: |
-        go generate ./...
+        go generate ./pkg/...
         git diff --exit-code
